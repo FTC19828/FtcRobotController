@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+import org.checkerframework.checker.units.qual.C;
 import org.firstinspires.ftc.teamcode.Attachments.Carousel;
 
 @TeleOp
@@ -14,8 +15,8 @@ public class Teleop extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         //declare motors
-        Carousel carousel = null;
-        Drivetrain drivetrain = null;
+        Carousel carousel = new Carousel(this);
+        Drivetrain drivetrain = new Drivetrain(this);
         DcMotor CarouselMotor = hardwareMap.dcMotor.get("CarouselMotor");
         Servo ClawServo = hardwareMap.servo.get("ClawServo");
         ClawServo.setPosition(1);
