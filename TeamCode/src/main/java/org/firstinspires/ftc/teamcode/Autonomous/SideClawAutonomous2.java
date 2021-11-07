@@ -7,9 +7,9 @@ import org.checkerframework.checker.units.qual.C;
 import org.firstinspires.ftc.teamcode.Attachments.Carousel;
 import org.firstinspires.ftc.teamcode.Drivetrain;
 
-@Autonomous(name = "SideClawAutonomous", group="Autonomous")
+@Autonomous(name = "SideClawAutonomous2", group="Autonomous")
 
-public class SideClawAutonomous extends LinearOpMode {
+public class SideClawAutonomous2 extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -19,11 +19,11 @@ public class SideClawAutonomous extends LinearOpMode {
         Drivetrain drivetrain = new Drivetrain(this);
         Carousel carousel = new Carousel(this);
 
+        drivetrain.moveAutonomousDrivetrainRight(0.5, 48);
         drivetrain.moveAutonomousDrivetrain( 0.2, 40);
         drivetrain.moveAutonomousDrivetrainLeft(0.5, 7);
         drivetrain.moveAutonomousDrivetrain(-0.2, -39);
-        drivetrain.moveAutonomousDrivetrainRight(0.2, 27);
+        drivetrain.moveAutonomousDrivetrainRight(0.2, 26);
         carousel.turnCarouselAutonomous();
-
     }
 }
