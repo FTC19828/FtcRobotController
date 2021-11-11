@@ -5,7 +5,7 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import org.firstinspires.ftc.teamcode.Drivetrain;
+import org.firstinspires.ftc.teamcode.Attachments.Drivetrain;
 
 @Autonomous(name = "DrivetrainTest", group="Autonomous")
 

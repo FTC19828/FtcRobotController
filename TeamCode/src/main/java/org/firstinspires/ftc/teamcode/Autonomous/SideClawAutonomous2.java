@@ -3,9 +3,8 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.checkerframework.checker.units.qual.C;
 import org.firstinspires.ftc.teamcode.Attachments.Carousel;
-import org.firstinspires.ftc.teamcode.Drivetrain;
+import org.firstinspires.ftc.teamcode.Attachments.Drivetrain;
 
 @Autonomous(name = "SideClawAutonomous2", group="Autonomous")
 
