@@ -21,7 +21,6 @@ public class DrivetrainTest extends LinearOpMode {
 
         Drivetrain drivetrain = new Drivetrain(this);
 
-        drivetrain.moveAutonomousDrivetrainLeft( 0.5, 538);
-
+        drivetrain.turnDrivetrain(0.5, -90);
     }
 }

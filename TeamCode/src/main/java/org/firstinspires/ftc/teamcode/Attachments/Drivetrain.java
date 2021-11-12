@@ -148,4 +148,47 @@ public class Drivetrain {
             op.telemetry.update();
         }
     }
-}
+
+    public void turnDrivetrain (double power, double angle) {
+
+        LeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        RightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        LeftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        RightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        int ticks = (int) (angle*9.85);
+
+            LeftFront.setTargetPosition(ticks);
+            LeftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            LeftBack.setTargetPosition(ticks);
+            LeftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            RightFront.setTargetPosition(-ticks);
+            RightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            RightBack.setTargetPosition(-ticks);
+            RightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            if (angle > 0) {
+                LeftFront.setPower(power);
+                LeftBack.setPower(power);
+                RightFront.setPower(-power);
+                RightBack.setPower(-power);
+            }
+
+            else if (angle < 0) {
+                LeftFront.setPower(-power);
+                LeftBack.setPower(-power);
+                RightFront.setPower(power);
+                RightBack.setPower(power);
+            }
+
+            while (LeftFront.isBusy() || RightFront.isBusy() || LeftBack.isBusy() || RightBack.isBusy() ) {
+
+                op.telemetry.addData("LeftFront Position", LeftFront.getCurrentPosition());
+                op.telemetry.addData("RightFront Position", RightFront.getCurrentPosition());
+                op.telemetry.addData("LeftBack Position", LeftBack.getCurrentPosition());
+                op.telemetry.addData("RightBack Position", RightBack.getCurrentPosition());
+                op.telemetry.update();
+            }
+        }
+    }
+
