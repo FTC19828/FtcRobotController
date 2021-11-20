@@ -50,7 +50,7 @@ import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
  * is explained below.
  */
 @TeleOp(name = "Concept: TensorFlow Object Detection Webcam", group = "Concept")
-@Disabled
+
 public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
   /* Note: This sample uses the all-objects Tensor Flow model (FreightFrenzy_BCDM.tflite), which contains
    * the following 4 detectable objects
@@ -84,7 +84,7 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
      * and paste it in to your code on the next line, between the double quotes.
      */
     private static final String VUFORIA_KEY =
-            " -- YOUR NEW VUFORIA KEY GOES HERE  --- ";
+            "AS+3miP/////AAABmUADHX1oj0Mrgz+nUhz+Kx4of+OMAHHpc1WO+qVoM6oFVjzjDmTHl+/HKvX4UBJfzOJ1czBlCzfaK9H5/+YYapP0vJq0N+0OnUvQmow/94xqEY+cciWJzxZ+yCm+jwxeaTSjkSwu1tRmkwoEXq06R4l8JHtaOMOpdOsbHHdxg0vql+yny2q4C9yybqz2sxvzbF+9J2B8LcNArikLcNTkXDJKXlbdk4dm74ocRjzl4grUIq89MbB/AnWXLCO54+FQlnazS+Ro4FvUfpxIDzkGydcCgJDLRJaH5Zh1rY6QumUGhPcxDLHNtiLRdZWXhRhPvk732UwHUO/8AjMTpr5cxyVvkyZTmNTNGydNBE3CqGRv";
 
     /**
      * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
@@ -118,7 +118,7 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
             // to artificially zoom in to the center of image.  For best results, the "aspectRatio" argument
             // should be set to the value of the images used to create the TensorFlow Object Detection model
             // (typically 16/9).
-            tfod.setZoom(2.5, 16.0/9.0);
+            tfod.setZoom(1, 16.0/9.0);
         }
 
         /** Wait for the game to begin */
@@ -176,7 +176,7 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
             "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
-       tfodParameters.minResultConfidence = 0.8f;
+       tfodParameters.minResultConfidence = 0.68f;
        tfodParameters.isModelTensorFlow2 = true;
        tfodParameters.inputSize = 320;
        tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
