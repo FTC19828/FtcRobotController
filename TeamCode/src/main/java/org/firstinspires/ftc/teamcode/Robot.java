@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Attachments.Carousel;
-import org.firstinspires.ftc.teamcode.Attachments.Claw;
 import org.firstinspires.ftc.teamcode.Attachments.Drivetrain;
 import org.firstinspires.ftc.teamcode.Attachments.Intake;
 
