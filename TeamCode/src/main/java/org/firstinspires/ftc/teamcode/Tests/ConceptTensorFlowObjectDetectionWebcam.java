@@ -27,19 +27,20 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.robotcontroller.external.samples;
+package org.firstinspires.ftc.teamcode.Tests;
 
 import android.annotation.SuppressLint;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import java.util.List;
+
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
+import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
+
+import java.util.List;
 
 /**
  * This 2020-2021 OpMode illustrates the basics of using the TensorFlow Object Detection API to
@@ -151,14 +152,22 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
                           if (recognition.getLabel().equals("Duck")) {
                               isDuckDetected = true;
                               telemetry.addData("Object Detected", "Duck");
-                              if(recognition.getLeft()>=1 && recognition.getLeft()<=2){
+                              if(recognition.getLeft()>=510 && recognition.getLeft()<=565){
                                   num=1;
+                                  telemetry.addData("1", null);
+                                  telemetry.update();
                               }
-                              else if(recognition.getLeft()>2 && recognition.getLeft()<=3){
+                              else if(recognition.getLeft()>230 && recognition.getLeft()<=300){
                                   num=2;
+                                  System.out.print("2");
+                                  telemetry.addData("2", null);
+                                  telemetry.update();
                               }
-                              else if(recognition.getLeft()>3 && recognition.getLeft()<4){
+                              else if(recognition.getLeft()>=-10 && recognition.getLeft()<=50){
                                   num=3;
+                                  System.out.print("3");
+                                  telemetry.addData("3", null);
+                                  telemetry.update();
                               }
                               else{
                                   num=2;
@@ -199,7 +208,7 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
             "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
-       tfodParameters.minResultConfidence = 0.68f;
+       tfodParameters.minResultConfidence = 0.6f;
        tfodParameters.isModelTensorFlow2 = true;
        tfodParameters.inputSize = 320;
        tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);

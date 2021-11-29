@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.teamcode.Attachments.Arm;
 import org.firstinspires.ftc.teamcode.Attachments.Carousel;
 import org.firstinspires.ftc.teamcode.Attachments.Drivetrain;
 import org.firstinspires.ftc.teamcode.Attachments.Intake;
@@ -13,6 +14,7 @@ public class Robot {
 //    Claw claw = null;
     Drivetrain drivetrain = null;
     Intake intake = null;
+    Arm arm = null;
 
     public Robot(LinearOpMode opmode) {
         this.op = opmode;
@@ -20,6 +22,7 @@ public class Robot {
 //        claw = new Claw(op);
         drivetrain = new Drivetrain(op);
         intake = new Intake(op);
+        arm = new Arm(op);
     }
 
     public void turnCarouselAutonomous() {
@@ -53,6 +56,10 @@ public class Robot {
         drivetrain.moveAutonomousDrivetrainRight(power, inches);
     }
 
+    public void turnDrivetrain(double power, double angle) {
+        drivetrain.turnDrivetrain(power, angle);
+    }
+
     public void turnIntakeForward(boolean intakeOn) {
         intake.turnIntakeForward(intakeOn);
     }
@@ -63,5 +70,13 @@ public class Robot {
 
     public void stopIntake(boolean forwardOff, boolean backwardOff) {
         intake.stopIntake(forwardOff, backwardOff);
+    }
+
+    public void deliverFreight(int level) {
+        arm.deliverFreight(level);
+    }
+
+    public void setArmToStart() {
+        arm.setToStart();
     }
 }

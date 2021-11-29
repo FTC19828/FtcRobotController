@@ -17,39 +17,37 @@ public class Teleop extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         Robot robot = new Robot(this);
-        Arm arm = new Arm(this);
-
         waitForStart();
 
         while (opModeIsActive()) {
 
             robot.moveTeleopDrivetrain(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
 
-            robot.turnCarouselTeleop(gamepad1.a);
-            robot.stopCarouselTeleop(gamepad1.a);
+            robot.turnCarouselTeleop(gamepad2.a);
+            robot.stopCarouselTeleop(gamepad2.a);
 
 //           if (gamepad1.b) {
 //               robot.pickUp();
 //           }
 
-           robot.turnIntakeForward(gamepad1.right_bumper);
-           robot.turnIntakeBackward(gamepad1.left_bumper);
-           robot.stopIntake(gamepad1.right_bumper, gamepad1.left_bumper);
+           robot.turnIntakeForward(gamepad2.right_bumper);
+           robot.turnIntakeBackward(gamepad2.left_bumper);
+           robot.stopIntake(gamepad2.right_bumper, gamepad2.left_bumper);
 
             if (gamepad1.y) {
-                arm.deliverFreight(3);
+                robot.deliverFreight(3);
             }
 
             if (gamepad1.x) {
-                arm.deliverFreight(2);
+                robot.deliverFreight(2);
             }
 
             if (gamepad1.b) {
-                arm.deliverFreight(1);
+                robot.deliverFreight(1);
             }
 
-            if (gamepad1.dpad_down) {
-                arm.setToStart();
+            if (gamepad1.a) {
+                robot.setArmToStart();
             }
         }
     }
