@@ -67,21 +67,19 @@ public class DuckDetector {
                                 isDuckDetected = true;
                                 op.telemetry.addData("Object Detected", "Duck");
                                 if(recognition.getLeft()>=400 && recognition.getLeft()<=700){
-                                    num=1;
-                                    op.telemetry.addData("1", null);
+                                    num=3;
+                                    op.telemetry.addData("3", null);
                                     op.telemetry.update();
 
                                 }
                                 else if(recognition.getLeft()>150 && recognition.getLeft()<=300){
                                     num=2;
-                                    System.out.print("2");
                                     op.telemetry.addData("2", null);
                                     op.telemetry.update();
                                 }
                                 else if(recognition.getLeft()>=-100 && recognition.getLeft()<=100){
-                                    num=3;
-                                    System.out.print("3");
-                                    op.telemetry.addData("3", null);
+                                    num=1;
+                                    op.telemetry.addData("1", null);
                                     op.telemetry.update();
                                 }
                                 else{
