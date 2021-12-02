@@ -18,7 +18,7 @@ public class Carousel {
     }
     public void turnCarouselAutonomous(){
         CarouselMotor.setPower(2);
-        this.op.sleep(2500);
+        this.op.sleep(3000);
         CarouselMotor.setPower(0);
     }
     public void turnCarouselTeleop(boolean CarouselOn){

@@ -47,6 +47,11 @@ public class DuckDetector {
     public int getDuckLocation(){
        int num = 0;
                 if (tfod != null) {
+
+                    for (int i = 0; i < 5; i++) {
+                        tfod.getUpdatedRecognitions();
+                        op.sleep(250);
+                    }
                     // getUpdatedRecognitions() will return null if no new information is available since
                     // the last time that call was made.
                     List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
@@ -66,6 +71,7 @@ public class DuckDetector {
                             if (recognition.getLabel().equals("Duck")) {
                                 isDuckDetected = true;
                                 op.telemetry.addData("Object Detected", "Duck");
+                                op.telemetry.update();
                                 if(recognition.getLeft()>=400 && recognition.getLeft()<=700){
                                     num=3;
                                     op.telemetry.addData("3", null);

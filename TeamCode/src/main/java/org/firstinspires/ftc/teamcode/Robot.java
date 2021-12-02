@@ -23,6 +23,7 @@ public class Robot {
         drivetrain = new Drivetrain(op);
         intake = new Intake(op);
         arm = new Arm(op);
+        arm.start();
     }
 
     public void turnCarouselAutonomous() {
@@ -42,6 +43,10 @@ public class Robot {
 
     public void moveTeleopDrivetrain(double y, double x, double rx) {
         drivetrain.moveTeleopDrivetrain(y, x, rx);
+    }
+
+    public void moveTeleopDrivetrainSlow(double y, double x, double rx) {
+        drivetrain.moveTeleopDrivetrainSlow(y, x, rx);
     }
 
     public void moveAutonomousDrivetrain(double power, double inches) {
