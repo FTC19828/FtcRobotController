@@ -35,14 +35,14 @@ public class FinalAutonomous extends LinearOpMode {
 
         if (level == 3) {
             robot.moveAutonomousDrivetrain(-0.5, -14.25);
-            robot.deliverFreight(3);
+            robot.deliverFreightAutonomous(3);
         }
         else {
             robot.moveAutonomousDrivetrain(-0.5, -6);
-            robot.deliverFreight(2);
+            robot.deliverFreightAutonomous(2);
         }
         robot.stopIntake(false, false);
-        robot.setArmToStart();
+        robot.setArmToStartAutonomous();
         robot.turnDrivetrain(0.5, 90);
          if (level == 3) {
             robot.moveAutonomousDrivetrainLeft(0.5, 20.5);

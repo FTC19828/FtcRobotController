@@ -84,4 +84,12 @@ public class Robot {
     public void setArmToStart() {
         arm.setToStart();
     }
+
+    public void deliverFreightAutonomous(int level) {
+        arm.deliverFreightAutonomous(level);
+    }
+
+    public void setArmToStartAutonomous() {
+        arm.setArmToStartAutonomous();
+    }
 }

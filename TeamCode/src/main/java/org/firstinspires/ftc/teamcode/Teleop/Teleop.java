@@ -37,18 +37,21 @@ public class Teleop extends LinearOpMode {
             if (gamepad1.y) {
                 robot.turnIntakeForward(true);
                 robot.deliverFreight(3);
+                sleep(1000);
                 robot.stopIntake(false, false);
             }
 
             if (gamepad1.x) {
                 robot.turnIntakeForward(true);
                 robot.deliverFreight(2);
+                sleep(1000);
                 robot.stopIntake(false, false);
             }
 
             if (gamepad1.b) {
                 robot.turnIntakeForward(true);
                 robot.deliverFreight(1);
+                sleep(1000);
                 robot.stopIntake(false, false);
             }
 
