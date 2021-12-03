@@ -111,6 +111,8 @@ public class Arm extends Thread {
             armMotor.setTargetPosition(ticksLevel2);
             armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             armMotor.setPower(0.1);
+            op.telemetry.addData("running", null);
+            op.telemetry.update();
         } else if (level == 3) {
             armMotor.setTargetPosition(ticksLevel3);
             armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
