@@ -1,18 +1,12 @@
 package org.firstinspires.ftc.teamcode.Teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.checkerframework.checker.units.qual.A;
-import org.firstinspires.ftc.teamcode.Attachments.Arm;
-import org.firstinspires.ftc.teamcode.Attachments.Carousel;
-import org.firstinspires.ftc.teamcode.Attachments.Drivetrain;
 import org.firstinspires.ftc.teamcode.Robot;
 
 @TeleOp
-public class Teleop extends LinearOpMode {
+public class OneGPTeleop extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
@@ -30,28 +24,25 @@ public class Teleop extends LinearOpMode {
 //               robot.pickUp();
 //           }
 
-           robot.turnIntakeForward(gamepad2.right_bumper);
-           robot.turnIntakeBackward(gamepad2.left_bumper);
-           robot.stopIntake(gamepad2.right_bumper, gamepad2.left_bumper);
+           robot.turnIntakeForward(gamepad1.right_bumper);
+           robot.turnIntakeBackward(gamepad1.left_bumper);
+           robot.stopIntake(gamepad1.right_bumper, gamepad1.left_bumper);
 
             if (gamepad1.y) {
                 robot.turnIntakeForward(true);
                 robot.deliverFreight(3);
-                sleep(1000);
                 robot.stopIntake(false, false);
             }
 
             if (gamepad1.x) {
                 robot.turnIntakeForward(true);
                 robot.deliverFreight(2);
-                sleep(1000);
                 robot.stopIntake(false, false);
             }
 
             if (gamepad1.b) {
                 robot.turnIntakeForward(true);
                 robot.deliverFreight(1);
-                sleep(1000);
                 robot.stopIntake(false, false);
             }
 

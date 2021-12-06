@@ -23,7 +23,7 @@ public class Robot {
         drivetrain = new Drivetrain(op);
         intake = new Intake(op);
         arm = new Arm(op);
-        arm.start();
+
     }
 
     public void turnCarouselAutonomous() {
@@ -84,12 +84,6 @@ public class Robot {
     public void setArmToStart() {
         arm.setToStart();
     }
-
-    public void deliverFreightAutonomous(int level) {
-        arm.deliverFreightAutonomous(level);
-    }
-
-    public void setArmToStartAutonomous() {
-        arm.setArmToStartAutonomous();
-    }
 }
+
+

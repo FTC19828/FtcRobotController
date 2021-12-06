@@ -29,7 +29,7 @@ public class SlowTeleop extends LinearOpMode {
 
            robot.turnIntakeForward(gamepad2.x);
            robot.turnIntakeBackward(gamepad2.b);
-           robot.stopIntake(gamepad2.x, gamepad2.b);
+//           robot.stopIntake(gamepad2.x, gamepad2.b);
 
             if (gamepad1.y) {
                 arm.deliverFreight(3);
