@@ -23,7 +23,7 @@ public class Carousel {
     }
     public void turnCarouselTeleop(boolean CarouselOn){
         if (CarouselOn) {
-            CarouselMotor.setPower(2);
+            CarouselMotor.setPower(-0.4);
         }
     }
     public void stopCarouselTeleop(boolean CarouselOn) {

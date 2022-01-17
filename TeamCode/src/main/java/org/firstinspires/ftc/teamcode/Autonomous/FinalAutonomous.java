@@ -36,6 +36,7 @@ public class FinalAutonomous extends LinearOpMode {
         if (level == 3) {
             robot.moveAutonomousDrivetrain(-0.5, -14.25);
             robot.deliverFreight(3);
+            sleep(3000);
         }
         else {
             robot.moveAutonomousDrivetrain(-0.5, -6);

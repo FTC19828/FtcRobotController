@@ -12,7 +12,6 @@ public class SlowTeleop extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         Robot robot = new Robot(this);
-        Arm arm = new Arm(this);
 
         waitForStart();
 
@@ -32,21 +31,21 @@ public class SlowTeleop extends LinearOpMode {
 //           robot.stopIntake(gamepad2.x, gamepad2.b);
 
             if (gamepad1.y) {
-                arm.deliverFreight(3);
+                robot.deliverFreight(3);
                 telemetry.addData("Running", null);
                 telemetry.update();
             }
 
             if (gamepad1.x) {
-                arm.deliverFreight(2);
+                robot.deliverFreight(2);
             }
 
             if (gamepad1.b) {
-                arm.deliverFreight(1);
+                robot.deliverFreight(1);
             }
 
             if (gamepad1.right_bumper) {
-                arm.setToStart();
+                robot.setArmToStart();
             }
         }
     }

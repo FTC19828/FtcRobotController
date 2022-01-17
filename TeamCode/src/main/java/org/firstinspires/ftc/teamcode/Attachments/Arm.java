@@ -4,12 +4,20 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class Arm {
+public class Arm extends Thread{
     DcMotor armMotor = null;
     DcMotor wristMotor = null;
     private LinearOpMode op;
 
-    public Arm(LinearOpMode opMode) {
+
+    int targetLevel = -1;
+    int count = 0;
+
+    int ticksLevel1 = 460;
+    int ticksLevel2 = 360;
+    int ticksLevel3 = 300;
+
+    public Arm (LinearOpMode opMode) {
         this.op = opMode;
         armMotor = op.hardwareMap.dcMotor.get("ArmMotor");
         wristMotor = op.hardwareMap.dcMotor.get("WristMotor");
@@ -17,12 +25,34 @@ public class Arm {
         wristMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         wristMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+
     }
 
-    int ticksLevel1 = 460;
-    int ticksLevel2 = 360;
-    int ticksLevel3 = 300;
-    public void deliverFreight(int level) {
+    public void setTargetPosition(int targetPosition) {
+        targetLevel = targetPosition;
+    }
+
+    public void run() {
+        while (true) {
+            if (targetLevel == 0) {
+                setToStart();
+                targetLevel = -1;
+            }
+            if (targetLevel > 0 && targetLevel < 4) {
+                deliverFreight(targetLevel);
+                targetLevel = -1;
+            }
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    private void deliverFreight(int level) {
         armMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         wristMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         if (level == 1) {
@@ -58,7 +88,7 @@ public class Arm {
         }
     }
 
-    public void setToStart() {
+    private void setToStart() {
         wristMotor.setTargetPosition(0);
         wristMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         wristMotor.setPower(0.1);
@@ -79,4 +109,6 @@ public class Arm {
         armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         wristMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
+
+
 }

@@ -17,9 +17,9 @@ public class IntakeTest extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         waitForStart();
-        Arm arm = new Arm(this);
-        arm.deliverFreight(3);
-        sleep(10000);
+//        Arm arm = new Arm(this);
+//        arm.deliverFreight(3);
+//        sleep(10000);
 
     }
 }

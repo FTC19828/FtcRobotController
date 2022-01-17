@@ -23,6 +23,7 @@ public class Robot {
         drivetrain = new Drivetrain(op);
         intake = new Intake(op);
         arm = new Arm(op);
+        arm.start();
 
     }
 
@@ -78,11 +79,11 @@ public class Robot {
     }
 
     public void deliverFreight(int level) {
-        arm.deliverFreight(level);
+        arm.setTargetPosition(level);
     }
 
     public void setArmToStart() {
-        arm.setToStart();
+        arm.setTargetPosition(0);
     }
 }
 
