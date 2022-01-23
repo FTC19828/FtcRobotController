@@ -25,22 +25,24 @@ public class FinalAutonomous extends LinearOpMode {
         waitForStart();
 
 
-        robot.moveAutonomousDrivetrain(-0.5, -6);
-        robot.turnDrivetrain(0.5, -90);
-        robot.moveAutonomousDrivetrain(0.5, 16);
+        robot.moveAutonomousDrivetrain(-0.5, -3);
+        robot.moveAutonomousDrivetrainLeft(0.5, 16);
         robot.turnCarouselAutonomous();
+        robot.moveAutonomousDrivetrainRight(0.5, 1);
+        robot.turnDrivetrain(0.5, -90);
         robot.moveAutonomousDrivetrain(-0.5, -44);
         robot.turnDrivetrain(0.5, 90);
         robot.turnIntakeForward(true);
 
         if (level == 3) {
-            robot.moveAutonomousDrivetrain(-0.5, -14.25);
+            robot.moveAutonomousDrivetrain(-0.5, -17.25);
             robot.deliverFreight(3);
             sleep(3000);
         }
         else {
-            robot.moveAutonomousDrivetrain(-0.5, -6);
+            robot.moveAutonomousDrivetrain(-0.5, -9);
             robot.deliverFreight(2);
+            sleep(3000);
         }
         robot.stopIntake(false, false);
         robot.setArmToStart();
@@ -49,7 +51,7 @@ public class FinalAutonomous extends LinearOpMode {
             robot.moveAutonomousDrivetrainLeft(0.5, 20.5);
         }
         else {
-            robot.moveAutonomousDrivetrainLeft(0.5, 14);
+            robot.moveAutonomousDrivetrainLeft(0.5, 15);
         }
         robot.moveAutonomousDrivetrain(1, 55);
 

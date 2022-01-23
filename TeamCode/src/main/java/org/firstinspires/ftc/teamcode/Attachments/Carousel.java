@@ -17,7 +17,7 @@ public class Carousel {
         CarouselMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public void turnCarouselAutonomous(){
-        CarouselMotor.setPower(2);
+        CarouselMotor.setPower(-0.4);
         this.op.sleep(3000);
         CarouselMotor.setPower(0);
     }
