@@ -50,6 +50,10 @@ public class Robot {
         drivetrain.moveTeleopDrivetrainSlow(y, x, rx);
     }
 
+    public void moveTeleopDrivetrainFast(double y, double x, double rx){
+        drivetrain.moveTeleopDrivetrainFast(y, x, rx);
+    }
+
     public void moveAutonomousDrivetrain(double power, double inches) {
         drivetrain.moveAutonomousDrivetrain(power, inches);
     }

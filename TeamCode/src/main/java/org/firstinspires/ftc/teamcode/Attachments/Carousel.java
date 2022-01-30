@@ -17,13 +17,13 @@ public class Carousel {
         CarouselMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public void turnCarouselAutonomous(){
-        CarouselMotor.setPower(-0.4);
+        CarouselMotor.setPower(-0.5);
         this.op.sleep(3000);
         CarouselMotor.setPower(0);
     }
     public void turnCarouselTeleop(boolean CarouselOn){
         if (CarouselOn) {
-            CarouselMotor.setPower(-0.4);
+            CarouselMotor.setPower(-0.5);
         }
     }
     public void stopCarouselTeleop(boolean CarouselOn) {

@@ -44,6 +44,24 @@ public class Drivetrain {
         RightBack.setPower(RightBackPower);
     }
 
+    public void moveTeleopDrivetrainFast(double y, double x, double rx) {
+        double LeftFrontPower = (y + x + rx);
+        double LeftBackPower = (y - x + rx);
+        double RightFrontPower = (y - x - rx);
+        double RightBackPower = (y + x - rx);
+
+        String display = "" + y + "\t" + x + "\t" + rx;
+        String powerDisplay = "" + LeftFrontPower + "\t" + RightFrontPower + "\t" + LeftBackPower + "\t" + RightBackPower;
+//        telemetry.addData("Values:  ", display);
+//        telemetry.addData("Power:  ", powerDisplay);
+//        telemetry.update();
+
+        LeftFront.setPower(LeftFrontPower);
+        LeftBack.setPower(LeftBackPower);
+        RightFront.setPower(RightFrontPower);
+        RightBack.setPower(RightBackPower);
+    }
+
     public void moveTeleopDrivetrainSlow(double y, double x, double rx) {
         double denominator = 5;
         double LeftFrontPower = (y + x + rx) / denominator;

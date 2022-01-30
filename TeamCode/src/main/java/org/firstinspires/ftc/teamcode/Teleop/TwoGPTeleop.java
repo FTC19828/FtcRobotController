@@ -22,7 +22,10 @@ public class TwoGPTeleop extends LinearOpMode {
         while (opModeIsActive()) {
 
             robot.moveTeleopDrivetrain(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
-
+//
+            if (gamepad1.right_bumper) {
+                robot.moveTeleopDrivetrainFast(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
+            }
             robot.turnCarouselTeleop(gamepad2.a);
             robot.stopCarouselTeleop(gamepad2.a);
 
@@ -30,9 +33,9 @@ public class TwoGPTeleop extends LinearOpMode {
 //               robot.pickUp();
 //           }
 
-           robot.turnIntakeForward(gamepad2.right_bumper);
-           robot.turnIntakeBackward(gamepad2.left_bumper);
-           robot.stopIntake(gamepad2.right_bumper, gamepad2.left_bumper);
+            robot.turnIntakeForward(gamepad2.right_bumper);
+            robot.turnIntakeBackward(gamepad2.left_bumper);
+            robot.stopIntake(gamepad2.right_bumper, gamepad2.left_bumper);
 
             if (gamepad1.y) {
                 robot.turnIntakeForward(true);
@@ -59,4 +62,4 @@ public class TwoGPTeleop extends LinearOpMode {
             }
         }
     }
-}
+    }
