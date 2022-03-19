@@ -30,16 +30,16 @@
 package org.firstinspires.ftc.robotcontroller.external.samples;
 
 import android.annotation.SuppressLint;
-
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import java.util.List;
+
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
+import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
+
+import java.util.List;
 
 /**
  * This 2020-2021 OpMode illustrates the basics of using the TensorFlow Object Detection API to
@@ -54,23 +54,20 @@ import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 @TeleOp(name = "Concept: TensorFlow Object Detection Webcam", group = "Concept")
 
 public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
-  /* Note: This sample uses the all-objects Tensor Flow model (FreightFrenzy_BCDM.tflite), which contains
-   * the following 4 detectable objects
-   *  0: Ball,
-   *  1: Cube,
-   *  2: Duck,
-   *  3: Marker (duck location tape marker)
-   *
-   *  Two additional model assets are available which only contain a subset of the objects:
-   *  FreightFrenzy_BC.tflite  0: Ball,  1: Cube
-   *  FreightFrenzy_DM.tflite  0: Duck,  1: Marker
-   */
-    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
+    /* Note: This sample uses the all-objects Tensor Flow model (FreightFrenzy_BCDM.tflite), which contains
+     * the following 4 detectable objects
+     *  0: Ball,
+     *  1: Cube,
+     *  2: Duck,
+     *  3: Marker (duck location tape marker)
+     *
+     *  Two additional model assets are available which only contain a subset of the objects:
+     *  FreightFrenzy_BC.tflite  0: Ball,  1: Cube
+     *  FreightFrenzy_DM.tflite  0: Duck,  1: Marker
+     */
+    private static final String TFOD_MODEL_ASSET = "RubiksCubeModel.tflite";
     private static final String[] LABELS = {
-      "Ball",
-      "Cube",
-      "Duck",
-      "Marker"
+            "Rubiks Cube"
     };
 
     /*
@@ -86,16 +83,14 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
      * and paste it in to your code on the next line, between the double quotes.
      */
     private static final String VUFORIA_KEY =
-            "AS+3miP/////AAABmUADHX1oj0Mrgz+nUhz+Kx4of+OMAHHpc1WO+qVoM6oFVjzjDmTHl+/HKvX4UBJfzOJ1czBlCzfaK9H5/+YYapP0vJq0N+0OnUvQmow/94xqEY+cciWJzxZ+yCm+jwxeaTSjkSwu1tRmkwoEXq06R4l8JHtaOMOpdOsbHHdxg0vql+yny2q4C9yybqz2sxvzbF+9J2B8LcNArikLcNTkXDJKXlbdk4dm74ocRjzl4grUIq89MbB/AnWXLCO54+FQlnazS+Ro4FvUfpxIDzkGydcCgJDLRJaH5Zh1rY6QumUGhPcxDLHNtiLRdZWXhRhPvk732UwHUO/8AjMTpr5cxyVvkyZTmNTNGydNBE3CqGRv";
-
-    /**
+"AS+3miP/////AAABmUADHX1oj0Mrgz+nUhz+Kx4of+OMAHHpc1WO+qVoM6oFVjzjDmTHl+/HKvX4UBJfzOJ1czBlCzfaK9H5/+YYapP0vJq0N+0OnUvQmow/94xqEY+cciWJzxZ+yCm+jwxeaTSjkSwu1tRmkwoEXq06R4l8JHtaOMOpdOsbHHdxg0vql+yny2q4C9yybqz2sxvzbF+9J2B8LcNArikLcNTkXDJKXlbdk4dm74ocRjzl4grUIq89MbB/AnWXLCO54+FQlnazS+Ro4FvUfpxIDzkGydcCgJDLRJaH5Zh1rY6QumUGhPcxDLHNtiLRdZWXhRhPvk732UwHUO/8AjMTpr5cxyVvkyZTmNTNGydNBE3CqGRv";    /**
      * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
      * localization engine.
      */
     private VuforiaLocalizer vuforia;
 
     /**
-     * {@link #tfod} is the variable we will use to store our instance of the TensorFlow Object
+     * {@link #tfod} is the variable we will use to store our instance of the TensorFlowjDmTHl+/HKvX4UBJfzOJ1czBlCzfaK9H5/+YYapP0vJq0N+0OnUvQmow Object
      * Detection engine.
      */
     private TFObjectDetector tfod;
@@ -136,38 +131,47 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
                     // the last time that call was made.
                     List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
                     if (updatedRecognitions != null) {
-                      telemetry.addData("# Object Detected", updatedRecognitions.size());
-                      // step through the list of recognitions and display boundary info.
-                      int i = 0;
-                      boolean isDuckDetected=false;
-                      int num;
-                      for (Recognition recognition : updatedRecognitions) {
-                        telemetry.addData(String.format("label (%d)", i), recognition.getLabel());
-                        telemetry.addData(String.format("  left,top (%d)", i), "%.03f , %.03f",
-                                recognition.getLeft(), recognition.getTop());
-                        telemetry.addData(String.format("  right,bottom (%d)", i), "%.03f , %.03f",
-                                recognition.getRight(), recognition.getBottom());
-                        i++;
-                          if (recognition.getLabel().equals("Duck")) {
-                              isDuckDetected = true;
-                              telemetry.addData("Object Detected", "Duck");
-                              if(recognition.getLeft()>=1 && recognition.getLeft()<=2){
-                                  num=1;
-                              }
-                              else if(recognition.getLeft()>2 && recognition.getLeft()<=3){
-                                  num=2;
-                              }
-                              else if(recognition.getLeft()>3 && recognition.getLeft()<4){
-                                  num=3;
-                              }
-                              else{
-                                  num=2;
-                              }
-                          } else {
-                              isDuckDetected = false;
-                          }
-                      }
-                      telemetry.update();
+                        telemetry.addData("# Object Detected", updatedRecognitions.size());
+                        // step through the list of recognitions and display boundary info.
+                        int i = 0;
+                        boolean isDuckDetected=false;
+                        int num;
+                        for (Recognition recognition : updatedRecognitions) {
+                            telemetry.addData(String.format("label (%d)", i), recognition.getLabel());
+                            telemetry.addData(String.format("  left,top (%d)", i), "%.03f , %.03f",
+                                    recognition.getLeft(), recognition.getTop());
+                            telemetry.addData(String.format("  right,bottom (%d)", i), "%.03f , %.03f",
+                                    recognition.getRight(), recognition.getBottom());
+                            i++;
+                            if (recognition.getLabel().equals("Duck")) {
+                                isDuckDetected = true;
+                                telemetry.addData("Object Detected", "Duck");
+                                if(recognition.getLeft()>=400 && recognition.getLeft()<=700){
+                                    num=1;
+                                    telemetry.addData("1", null);
+                                    telemetry.update();
+
+                                }
+                                else if(recognition.getLeft()>150 && recognition.getLeft()<=300){
+                                    num=2;
+                                    System.out.print("2");
+                                    telemetry.addData("2", null);
+                                    telemetry.update();
+                                }
+                                else if(recognition.getLeft()>=-100 && recognition.getLeft()<=100){
+                                    num=3;
+                                    System.out.print("3");
+                                    telemetry.addData("3", null);
+                                    telemetry.update();
+                                }
+                                else{
+                                    num=2;
+                                }
+                            } else {
+                                isDuckDetected = false;
+                            }
+                        }
+                        telemetry.update();
                     }
                 }
             }
@@ -197,12 +201,12 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
      */
     private void initTfod() {
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
-            "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+                "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
-       tfodParameters.minResultConfidence = 0.68f;
-       tfodParameters.isModelTensorFlow2 = true;
-       tfodParameters.inputSize = 320;
-       tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
-       tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABELS);
+        tfodParameters.minResultConfidence = 0.6f;
+        tfodParameters.isModelTensorFlow2 = true;
+        tfodParameters.inputSize = 320;
+        tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
+        tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABELS);
     }
 }
