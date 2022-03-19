@@ -60,9 +60,9 @@ public class DuckDetector {
                                     recognition.getRight(), recognition.getBottom());
                             i++;
 
-                            if (recognition.getLabel().equals("Duck")) {
+                            if (recognition.getLabel().equals("Rubiks Cube")) {
                                 isDuckDetected = true;
-                                op.telemetry.addData("Object Detected", "Duck");
+                                op.telemetry.addData("Object Detected", "Rubiks Cube");
                                 if(recognition.getLeft()>=400 && recognition.getLeft()<=700){
                                     num=1;
                                     op.telemetry.addData("1", null);
@@ -86,7 +86,7 @@ public class DuckDetector {
                                 }
                             } else {
                                 isDuckDetected = false;
-                                op.telemetry.addData("Duck not Detected", null);
+                                op.telemetry.addData("Rubiks Cube not Detected", null);
                                 op.telemetry.update();
                             }
 
