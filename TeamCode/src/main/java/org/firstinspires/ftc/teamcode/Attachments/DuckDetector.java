@@ -14,10 +14,7 @@ public class DuckDetector {
     private LinearOpMode op;
     private static final String TFOD_MODEL_ASSET = "RubiksCubeModel.tflite";
     private static final String[] LABELS = {
-            "Ball",
-            "Cube",
-            "Duck",
-            "Marker"
+          "Rubiks Cube"
     };
     private static final String VUFORIA_KEY =
             "AS+3miP/////AAABmUADHX1oj0Mrgz+nUhz+Kx4of+OMAHHpc1WO+qVoM6oFVjzjDmTHl+/HKvX4UBJfzOJ1czBlCzfaK9H5/+YYapP0vJq0N+0OnUvQmow/94xqEY+cciWJzxZ+yCm+jwxeaTSjkSwu1tRmkwoEXq06R4l8JHtaOMOpdOsbHHdxg0vql+yny2q4C9yybqz2sxvzbF+9J2B8LcNArikLcNTkXDJKXlbdk4dm74ocRjzl4grUIq89MbB/AnWXLCO54+FQlnazS+Ro4FvUfpxIDzkGydcCgJDLRJaH5Zh1rY6QumUGhPcxDLHNtiLRdZWXhRhPvk732UwHUO/8AjMTpr5cxyVvkyZTmNTNGydNBE3CqGRv";
