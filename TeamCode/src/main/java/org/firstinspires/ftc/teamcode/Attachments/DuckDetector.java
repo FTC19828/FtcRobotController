@@ -12,7 +12,7 @@ import java.util.List;
 
 public class DuckDetector {
     private LinearOpMode op;
-    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
+    private static final String TFOD_MODEL_ASSET = "RubiksCubeModel.tflite";
     private static final String[] LABELS = {
             "Ball",
             "Cube",
@@ -47,11 +47,6 @@ public class DuckDetector {
     public int getDuckLocation(){
        int num = 0;
                 if (tfod != null) {
-
-                    for (int i = 0; i < 5; i++) {
-                        tfod.getUpdatedRecognitions();
-                        op.sleep(250);
-                    }
                     // getUpdatedRecognitions() will return null if no new information is available since
                     // the last time that call was made.
                     List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
@@ -71,21 +66,22 @@ public class DuckDetector {
                             if (recognition.getLabel().equals("Duck")) {
                                 isDuckDetected = true;
                                 op.telemetry.addData("Object Detected", "Duck");
-                                op.telemetry.update();
                                 if(recognition.getLeft()>=400 && recognition.getLeft()<=700){
-                                    num=3;
-                                    op.telemetry.addData("3", null);
+                                    num=1;
+                                    op.telemetry.addData("1", null);
                                     op.telemetry.update();
 
                                 }
                                 else if(recognition.getLeft()>150 && recognition.getLeft()<=300){
                                     num=2;
+                                    System.out.print("2");
                                     op.telemetry.addData("2", null);
                                     op.telemetry.update();
                                 }
                                 else if(recognition.getLeft()>=-100 && recognition.getLeft()<=100){
-                                    num=1;
-                                    op.telemetry.addData("1", null);
+                                     num=3;
+                                    System.out.print("3");
+                                    op.telemetry.addData("3", null);
                                     op.telemetry.update();
                                 }
                                 else{
@@ -93,6 +89,8 @@ public class DuckDetector {
                                 }
                             } else {
                                 isDuckDetected = false;
+                                op.telemetry.addData("Duck not Detected", null);
+                                op.telemetry.update();
                             }
 
                         }
