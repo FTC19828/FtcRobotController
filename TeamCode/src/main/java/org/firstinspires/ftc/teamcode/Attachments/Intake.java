@@ -19,13 +19,13 @@ public class Intake {
         if (intakeOn) {
             op.telemetry.addData("setting power", null);
             op.telemetry.update();
-            intakeMotor.setPower(0.5);
+            intakeMotor.setPower(-1);
         }
     }
 
     public void turnIntakeBackward(boolean intakeOn) {
         if (intakeOn) {
-            intakeMotor.setPower(-0.5);
+            intakeMotor.setPower(1);
         }
     }
     public void stopIntake(boolean forwardOff, boolean backwardOff) {

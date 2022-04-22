@@ -63,7 +63,7 @@ public class Drivetrain {
     }
 
     public void moveTeleopDrivetrainSlow(double y, double x, double rx) {
-        double denominator = 5;
+        double denominator = 3;
         double LeftFrontPower = (y + x + rx) / denominator;
         double LeftBackPower = (y - x + rx) / denominator;
         double RightFrontPower = (y - x - rx) / denominator;

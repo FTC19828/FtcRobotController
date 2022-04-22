@@ -29,10 +29,6 @@ public class TwoGPTeleop extends LinearOpMode {
             robot.turnCarouselTeleop(gamepad2.a);
             robot.stopCarouselTeleop(gamepad2.a);
 
-//           if (gamepad1.b) {
-//               robot.pickUp();
-//           }
-
             robot.turnIntakeForward(gamepad2.right_bumper);
             robot.turnIntakeBackward(gamepad2.left_bumper);
             robot.stopIntake(gamepad2.right_bumper, gamepad2.left_bumper);
@@ -62,4 +58,4 @@ public class TwoGPTeleop extends LinearOpMode {
             }
         }
     }
-    }
+}

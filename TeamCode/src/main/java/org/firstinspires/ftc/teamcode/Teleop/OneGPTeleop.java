@@ -17,16 +17,13 @@ public class OneGPTeleop extends LinearOpMode {
 
             robot.moveTeleopDrivetrain(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
 
-            robot.turnCarouselTeleop(gamepad2.a);
-            robot.stopCarouselTeleop(gamepad2.a);
+            robot.turnCarouselTeleop(gamepad1.dpad_up);
+            robot.stopCarouselTeleop(gamepad2.dpad_up);
 
-//           if (gamepad1.b) {
-//               robot.pickUp();
-//           }
 
-           robot.turnIntakeForward(gamepad1.right_bumper);
-           robot.turnIntakeBackward(gamepad1.left_bumper);
-           robot.stopIntake(gamepad1.right_bumper, gamepad1.left_bumper);
+            robot.turnIntakeForward(gamepad1.right_bumper);
+            robot.turnIntakeBackward(gamepad1.left_bumper);
+            robot.stopIntake(gamepad1.right_bumper, gamepad1.left_bumper);
 
             if (gamepad1.y) {
                 robot.turnIntakeForward(true);
