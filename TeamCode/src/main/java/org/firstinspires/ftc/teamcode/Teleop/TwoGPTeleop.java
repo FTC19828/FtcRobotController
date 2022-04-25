@@ -47,7 +47,7 @@ public class TwoGPTeleop extends LinearOpMode {
 
             if (gamepad1.b) {
                 robot.turnIntakeForward(true);
-                robot.deliverFreight(1);
+                robot.deliverFreight(4);
                 robot.stopIntake(false, false);
             }
 

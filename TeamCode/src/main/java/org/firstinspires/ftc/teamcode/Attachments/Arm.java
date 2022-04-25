@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class Arm extends Thread{
+public class Arm extends Thread {
     DcMotor armMotor = null;
     DcMotor wristMotor = null;
     private LinearOpMode op;
@@ -17,7 +17,7 @@ public class Arm extends Thread{
     int ticksLevel2 = 360;
     int ticksLevel3 = 300;
 
-    public Arm (LinearOpMode opMode) {
+    public Arm(LinearOpMode opMode) {
         this.op = opMode;
         armMotor = op.hardwareMap.dcMotor.get("ArmMotor");
         wristMotor = op.hardwareMap.dcMotor.get("WristMotor");
@@ -39,7 +39,7 @@ public class Arm extends Thread{
                 setToStart();
                 targetLevel = -1;
             }
-            if (targetLevel > 0 && targetLevel < 4) {
+            if (targetLevel > 0 && targetLevel < 5) {
                 deliverFreight(targetLevel);
                 targetLevel = -1;
             }
@@ -57,11 +57,9 @@ public class Arm extends Thread{
         wristMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         if (level == 1) {
             armMotor.setTargetPosition(ticksLevel1);
-        }
-        else if (level == 2) {
+        } else if (level == 2) {
             armMotor.setTargetPosition(ticksLevel2);
-        }
-        else {
+        } else {
             armMotor.setTargetPosition(ticksLevel3);
         }
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -75,8 +73,7 @@ public class Arm extends Thread{
 
         if (level == 1) {
             wristMotor.setTargetPosition(-400);
-        }
-        else {
+        } else if (level == 2 || level == 3) {
             wristMotor.setTargetPosition(-540);
         }
         wristMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -110,5 +107,17 @@ public class Arm extends Thread{
         wristMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
+    public void testArm(int targetPosition, double speed) {
+        armMotor.setTargetPosition(targetPosition);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setPower(speed);
+
+        while (armMotor.isBusy()) {
+            op.telemetry.addData("ArmMotor Position", armMotor.getCurrentPosition());
+            op.telemetry.update();
+        }
+        armMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    }
 
 }
