@@ -20,34 +20,36 @@ public class NewAutonomous extends LinearOpMode {
         int level = duckDetector.getDuckLocation();
         telemetry.addData("level", level);
         telemetry.update();
-        level = 3;
 
         waitForStart();
 
         robot.moveAutonomousDrivetrainRight(0.5, 30);
         if (level == 3) {
-            robot.moveAutonomousDrivetrain(-0.5, -19);
+            robot.moveAutonomousDrivetrain(-0.5, -14.25);
             robot.deliverFreight(3);
             sleep(3000);
-        }
-        else if (level == 2) {
-            robot.moveAutonomousDrivetrain(-0.5, -9.5);
+        } else if (level == 2) {
+            robot.moveAutonomousDrivetrain(-0.5, -8);
             robot.deliverFreight(2);
             sleep(3000);
-            robot.moveAutonomousDrivetrain(0.5, -9.5);
-        }
-        else {
-            robot.moveAutonomousDrivetrain(-0.5, -4);
+            robot.moveAutonomousDrivetrain(-0.5, -6.25);
+
+        } else {
+            robot.moveAutonomousDrivetrain(-0.5, -2);
             robot.deliverFreight(1);
             sleep(3000);
-            robot.moveAutonomousDrivetrain(-0.5, -15);
+            robot.moveAutonomousDrivetrain(-0.5, -12.25);
         }
         robot.setArmToStart();
         robot.moveAutonomousDrivetrainLeft(0.5, 48);
-        robot.moveAutonomousDrivetrain(0.5, 17);
+        robot.moveAutonomousDrivetrain(0.5, 12);
         robot.turnCarouselAutonomous();
         robot.moveAutonomousDrivetrainRight(0.5, 10);
         robot.turnDrivetrain(0.5, 90);
+        robot.moveAutonomousDrivetrain(0.5, 60);
+        robot.moveAutonomousDrivetrainLeft(0.5, 13);
+        robot.moveAutonomousDrivetrain(0.5, 25);
+
 
     }
 }
